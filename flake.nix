@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     # Third-party modules
-    minegrub-theme = { url = "github:pumita/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
+    minegrub-theme = { url = "github:Lxtharia/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
   outputs = { nixpkgs, ... } @ inputs:
