@@ -5,25 +5,8 @@
   username ? "user",
   ...
 }: {
-
-  # ---------------------------------------------
-  #  NixOS
-  # ---------------------------------------------
-
-  # NixOS
-  system.stateVersion = "unstable";
-
-  # Nixpkgs
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = "${system}";
-
-  # Nix
-  nix.enable = true;
-  nix.channel.enable = true;
-  nix.settings.allowed-users = [ "root" "@wheel" ];
-  nix.settings.trusted-users = [ "root" "@wheel" ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  imports = [ ./modules/system ];
+  
   # NH
   programs.nh.enable = true;
   programs.nh.flake = "/etc/nixos";
@@ -116,17 +99,6 @@
   # ---------------------------------------------
   #  Garbage Collector / Optimizer
   # ---------------------------------------------
-
-  # Optimizer
-  nix.optimise.automatic = true;
-  nix.optimise.dates = [ "daily" ];
-  nix.settings.auto-optimise-store = true;
-
-  # Garbage collector: Nix
-  #nix.gc.automatic = true;
-  #nix.gc.persistent = true;
-  #nix.gc.dates = "daily";
-  #nix.gc.options = "--delete-older-than 7d";
 
   # Garbage collector: NH
   programs.nh.clean.enable = true;

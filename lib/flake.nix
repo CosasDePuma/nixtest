@@ -12,7 +12,6 @@
       mkHost = options:
         let
           defaults = {
-            configuration = "./configuration.nix"; # FIXME: Import from hostname config
             hostname      = "nixos";
             username      = "user";
           };
@@ -23,8 +22,8 @@
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
               modules = [
-                ./hardware-configuration.nix
-                ./${opts.configuration}
+                ../hardware-configuration.nix
+                ../os/hosts/${opts.hostname}/configuration.nix
               ];
               specialArgs = { inherit (opts) hostname username; system = "${arch}-linux"; };
             };

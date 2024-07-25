@@ -8,7 +8,7 @@
       lib' = ((import ../lib/flake.nix).outputs { inherit nixpkgs; }).lib;
     in {
       nixosConfigurations = lib'.mkHost {
-        hostname = "B105"; username = "architech";
+        hostname = "metaverse"; username = "architech";
       };
     };
 }
