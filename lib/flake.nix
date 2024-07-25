@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, third-party ? {}, ... }:
     let
 
       # mkHost :: set -> set
@@ -22,6 +22,10 @@
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
               modules = [
+                # Modules
+                third-party.minegrub.nixosModules.default
+
+                # Configuration
                 ../hardware-configuration.nix
                 ../os/hosts/${opts.hostname}/configuration.nix
               ];

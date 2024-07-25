@@ -1,6 +1,4 @@
-{ config, ... }: {
-  imports = [
-    ./gc.nix
-    ./nix.nix
-  ];
-}
+with builtins; 
+map (x: import (./. + "/${x}"))
+    (filter (x: x != "default.nix")
+      (attrNames (readDir ./.)))

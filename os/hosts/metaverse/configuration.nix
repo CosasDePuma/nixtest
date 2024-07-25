@@ -5,59 +5,10 @@
   username ? "user",
   ...
 }: {
-  imports = [ ./modules/system ];
-  
-  # NH
-  programs.nh.enable = true;
-  programs.nh.flake = "/etc/nixos";
-
-  # ---------------------------------------------
-  #  Bootloader
-  # ---------------------------------------------
-
-  # Grub
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # ---------------------------------------------
-  #  Networking
-  # ---------------------------------------------
-
-  # Hostname
-  networking.hostName = hostname;
-
-  # Network Manager
-  networking.useDHCP = false;
-  networking.networkmanager.enable = true;
-  programs.nm-applet.enable = true;
-
-  # ---------------------------------------------
-  #  Internationalisation
-  # ---------------------------------------------
-
-  # Timezone
-  time.timeZone = "Europe/Madrid";
-
-  # Language
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_ES.UTF-8";
-    LC_IDENTIFICATION = "es_ES.UTF-8";
-    LC_MEASUREMENT = "es_ES.UTF-8";
-    LC_MONETARY = "es_ES.UTF-8";
-    LC_NAME = "es_ES.UTF-8";
-    LC_NUMERIC = "es_ES.UTF-8";
-    LC_PAPER = "es_ES.UTF-8";
-    LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
-  };
-
-  # Keyboard
-  services.xserver.xkb.layout = "us,es";
-  services.xserver.xkb.variant = ",";
-  services.xserver.xkb.options = "grp:alt_shift_toggle";
+  imports = [
+    ../../modules/system
+    ../../modules/third-party/minegrub.nix
+  ];
 
   # ---------------------------------------------
   #   Desktop / Window Manager
@@ -82,28 +33,6 @@
   services.xserver.windowManager.awesome.luaModules = with pkgs.luaPackages; [
     luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
   ];
-
-  # ---------------------------------------------
-  #  Sound
-  # ---------------------------------------------
-
-  # Pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire.enable = true;
-  services.pipewire.alsa.enable = true;
-  services.pipewire.alsa.support32Bit = true;
-  services.pipewire.pulse.enable = true;
-  services.pipewire.jack.enable = true;
-
-  # ---------------------------------------------
-  #  Garbage Collector / Optimizer
-  # ---------------------------------------------
-
-  # Garbage collector: NH
-  programs.nh.clean.enable = true;
-  programs.nh.clean.dates = "daily";
-  programs.nh.clean.extraArgs = "--keep 5 --keep-since 7d";
 
   # ---------------------------------------------
   #  User
