@@ -26,4 +26,3 @@
         programs.nh.clean.extraArgs = lib.mkDefault "--keep 5 --keep-since 7d";
       });
   }
-}
