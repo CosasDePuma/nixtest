@@ -8,6 +8,7 @@
       defaults = {
         hostname      = "nixos";
         username      = "user";
+        extraModules  = [];
       };
       opts = defaults // options;
     in
@@ -15,7 +16,7 @@
         name = "${opts.hostname}-${arch}";
         value = nixpkgs.lib.nixosSystem {
           system = "${arch}-linux";
-          modules = [
+          modules = extraModules ++ [
             # Configuration
             ../hardware-configuration.nix
             ../os/hosts/${opts.hostname}/configuration.nix
