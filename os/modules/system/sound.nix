@@ -1,6 +1,6 @@
 { config, lib, ... }:
   let
-    cfg = config.modules.sound;
+    cfg = config.modules;
   in {
     options = {
       modules.sound = lib.mkOption {
