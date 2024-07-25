@@ -10,7 +10,7 @@
     ../../modules/third-party/minegrub.nix
   ];
 
-  modules = {
+  config.modules = {
 
     # ---------------------------------------------
     #   System
@@ -27,9 +27,6 @@
     timezone         = "Europe/Madrid";                     # Timezone
 
   };
-
-  modules.aaa = 1;
-  manos = 1;
 
   # ---------------------------------------------
   #   Desktop / Window Manager
