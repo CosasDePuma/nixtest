@@ -1,15 +1,39 @@
-{ lib, system ? "x86_64-linux", ... }: {
-  # NixOS
-  system.stateVersion = lib.mkDefault "unstable";
+{ config, lib, ... }:
+  let
+    cfg = config.modules;
+  in {
+    options = {
+      modules.system = {
+        version = lib.mkOption {
+          default = "unstable";
+          example = "24.05";
+          type = lib.types.str;
+          description = ''
+            NixOS version to use. Default is `unstable` (rolling release).
+          '';
+        };
 
-  # Nixpkgs
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
-  nixpkgs.hostPlatform = lib.mkDefault "${system}";
+        platform = lib.mkOption {
+          default = "x86_64-linux";
+          example = "aarch64-linux";
+          type = lib.types.enum [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+          description = ''
+            Nixpkgs host platform.
+          '';
+        };
+      };
+    };
 
-  # Nix
-  nix.enable = lib.mkDefault true;
-  nix.channel.enable = lib.mkDefault true;
-  nix.settings.allowed-users = lib.mkDefault [ "root" "@wheel" ];
-  nix.settings.trusted-users = lib.mkDefault [ "root" "@wheel" ];
-  nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" ];
-}
+    config = {
+      system.stateVersion = lib.mkDefault cfg.system.version;
+      
+      nixpkgs.config.allowUnfree = lib.mkDefault true;
+      nixpkgs.hostPlatform = lib.mkDefault cfg.system.platform;
+
+      nix.enable = lib.mkDefault true;
+      nix.channel.enable = lib.mkDefault true;
+      nix.settings.allowed-users = lib.mkDefault [ "root" "@wheel" ];
+      nix.settings.trusted-users = lib.mkDefault [ "root" "@wheel" ];
+      nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" ];
+    };
+  }

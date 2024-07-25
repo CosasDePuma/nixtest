@@ -15,6 +15,7 @@
 
     config = {
       hardware.pulseaudio.enable = lib.mkDefault (cfg.sound == "pulseaudio");
+
       services.pipewire = lib.mkIf (cfg.sound == "pipewire") {
         enable = lib.mkDefault true;
         alsa.enable = lib.mkDefault true;
@@ -23,6 +24,7 @@
         jack.enable = lib.mkDefault true;
         wireplumber.enable = lib.mkDefault true;
       };
+
       security.rtkit.enable = lib.mkDefault (cfg.sound != "none");
     };
 }

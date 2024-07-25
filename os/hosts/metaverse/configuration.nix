@@ -10,11 +10,18 @@
     ../../modules/third-party/minegrub.nix
   ];
 
-  # ---------------------------------------------
-  #   System
-  # ---------------------------------------------
+  modules = {
 
-  modules.sound = "pipewire";
+    # ---------------------------------------------
+    #   System
+    # ---------------------------------------------
+
+    nh = "/home/${username}/.config/nixos";
+    sound = "pipewire";
+    system.platform = "${system}";
+    system.version = "unstable";
+
+  };
 
   # ---------------------------------------------
   #   Desktop / Window Manager
