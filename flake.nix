@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    os' = { url = "./os"; inputs.nixpkgs.follows = "nixpkgs"; };
+    os' = { url = "path:./os"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
   outputs = { self, os', ... }: {
