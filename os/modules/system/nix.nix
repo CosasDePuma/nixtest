@@ -25,6 +25,10 @@
     };
 
     config = {
+      warnings = [
+        "The value of `nixpkgs.config.allowUnfree` is ${toString config.nixpkgs.config.allowUnfree} and should be set to ${cfg.nix.platform}"
+      ];
+
       system.stateVersion = lib.mkDefault cfg.nix.version;
 
       nixpkgs.config.allowUnfree = lib.mkDefault true;
