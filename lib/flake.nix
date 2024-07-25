@@ -24,7 +24,7 @@
               system = "${arch}-linux";
               modules = [
                 ./hardware-configuration.nix
-                ${opts.configuration}
+                ./${opts.configuration}
               ];
               specialArgs = { inherit (opts) hostname username; system = "${arch}-linux"; };
             };
