@@ -2,10 +2,8 @@
   description = "My own flake support library";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-  inputs.minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
-
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs, ... }:
     let
 
       # mkHost :: set: -> set
@@ -24,8 +22,6 @@
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
               modules = [
-                inputs.minegrub-theme.nixosModules.default
-
                 # Configuration
                 ../hardware-configuration.nix
                 ../os/hosts/${opts.hostname}/configuration.nix
