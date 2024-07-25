@@ -17,7 +17,7 @@
     # ---------------------------------------------
 
     languages        = [ "us" "es" ];                       # Keyboard layout, locale and system language
-    network.hostname = "${hostname}";                       # Hostname
+    network.hostname = "${hostname}-pepe";                       # Hostname
     network.ethernet = true;                                # Wired connection
     network.wifi     = true;                                # Wireless connection
     nh               = "/home/${username}/.config/nixos";   # Nix Helper
