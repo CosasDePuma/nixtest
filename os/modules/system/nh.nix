@@ -5,7 +5,7 @@
     options = {
       modules.nh = lib.mkOption {
         default = null;
-        example = "/home/user/.config/nixos";
+        example = /home/user/.config/nixos;
         type = with lib.types; nullOr path;
         description = ''
           Enable the Nix Helper.

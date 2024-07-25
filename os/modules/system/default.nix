@@ -1,11 +1,4 @@
-{ ... }: {
-  imports = [
-    ./gc.nix
-    ./grub.nix
-    ./internationalisation.nix
-    ./networking.nix
-    ./nh.nix
-    ./nix.nix
-    ./sound.nix
-  ];
-}
+with builtins; 
+  map (x: import (./. + "/${x}"))
+    (filter (x: x != "default.nix")
+      (attrNames (readDir ./.)))
