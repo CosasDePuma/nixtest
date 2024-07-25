@@ -25,11 +25,6 @@
     };
 
     config = {
-      warnings = [
-        "The value of `nixpkgs.config.allowUnfree` is ${config.networking.hostName} and should be set to ${cfg.nix.platform}"
-      ];
-      networking.hostName = lib.mkDefault cfg.nix.platform;
-
       system.stateVersion = lib.mkDefault cfg.nix.version;
 
       nixpkgs.config.allowUnfree = lib.mkDefault true;

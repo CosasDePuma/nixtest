@@ -35,8 +35,10 @@
 
     config = {
       # Hostname
-      networking.hostName = lib.mkDefault cfg.network.hostname;
-    } // lib.mkIf cfg.network.ethernet {
+      networking.hostName = lib.mkDefault "pepe" # cfg.network.hostname;
+    }
+    /*
+    // lib.mkIf cfg.network.ethernet {
       # Network Manager
       networking.useDHCP = lib.mkDefault false;
       networking.networkmanager.enable = lib.mkDefault true;
@@ -45,4 +47,5 @@
       # WPA_Supplicant
       networking.wireless.enable = lib.mkDefault true;
     };
+    */
   }
