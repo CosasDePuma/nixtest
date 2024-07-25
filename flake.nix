@@ -4,7 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    # Third-party modules
+    # -----------------------
+    #  Third-party modules
+    # -----------------------
+    
+    # MineGRUB is a Minecraft GRUB theme.
     minegrub-theme = { url = "github:Lxtharia/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
