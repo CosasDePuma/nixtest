@@ -32,11 +32,9 @@
         # Time
         time.timeZone = cfg.timezone;
 
-        warnings = [ "Debugging: ${primary_language} ${locale}" ];
-
         # Language
         i18n.defaultLocale = lib.mkDefault locale;
-        i18n.extraLocaleSettings = lib.mkDefault {
+        i18n.extraLocaleSettings = {
           LANGUAGE = lib.mkDefault locale;
           LC_ALL = lib.mkDefault locale;
           LC_ADDRESS = lib.mkDefault locale;
