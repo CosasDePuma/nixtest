@@ -1,4 +1,4 @@
-{ config, lib, username ? "user", ... }: {
+{ username ? "user", ... }: { config, lib, ... }: {
   # Disable default garbage collector
   nix.gc.automatic = lib.mkForce false;
   

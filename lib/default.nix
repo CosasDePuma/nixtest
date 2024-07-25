@@ -1,4 +1,4 @@
-{ nixpkgs }: {
+{ nixpkgs, ... }: { ... }: {
 
   # mkHost :: set: -> set
   # Generates OS configuration for `x86_64` and `aarch64` architecture types.
