@@ -5,9 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self, os', ... }:
+  outputs = { ... }:
     let
-      os' = import ./os/flake.nix { inherit nixpkgs; };
+      os' = (import ./os/flake.nix).outputs { inherit nixpkgs; };
   in {
     inherit (os') nixosConfigurations;
   };

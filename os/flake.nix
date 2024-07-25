@@ -1,14 +1,14 @@
 {
   description = "All my OS in a flake";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    lib' = { url = "./lib"; inputs.nixpkgs.follows = "nixpkgs"; };
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-  outputs = { self, lib', ... }: {
-    nixosConfigurations = lib'.mkHost {
-      hostname = "B105"; username = "architech";
+  outputs = { nixpkgs, ... }:
+    let
+      lib' = (import ./lib/flake.nix).outputs { inherit nixpkgs; };
+    in {
+      nixosConfigurations = lib'.mkHost {
+        hostname = "B105"; username = "architech";
+      };
     };
-  };
 }
