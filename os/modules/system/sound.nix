@@ -1,8 +1,8 @@
 { config, lib, ... }:
   let
-    cfg = config.mods;
+    cfg = config.within;
   in {
-    options.mods = {
+    options.within = {
       sound = lib.mkOption {
         default = "none";
         example = "pipewire";

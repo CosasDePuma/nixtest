@@ -1,8 +1,8 @@
 { config, lib, ... }:
   let
-    cfg = config.mods;
+    cfg = config.within;
   in {
-    options.mods = {
+    options.within = {
       languages = lib.mkOption {
         default = "us";
         example = ["es" "us"];

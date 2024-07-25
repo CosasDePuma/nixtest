@@ -1,8 +1,8 @@
 { config, lib, ... }:
   let
-    cfg = config.mods;
+    cfg = config.within;
   in {
-    options.mods = {
+    options.within = {
       network = {
         hostname = lib.mkOption {
           default = "nixos";
@@ -35,7 +35,7 @@
 
     config = {
       # Hostname
-      networking.hostName = lib.mkDefault "paco"; #cfg.network.hostname;
+      networking.hostName = lib.mkDefault cfg.network.hostname;
     };
     /*
     // lib.mkIf cfg.network.ethernet {
