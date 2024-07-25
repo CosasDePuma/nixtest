@@ -7,7 +7,7 @@
 
   outputs = { nixpkgs, ... }:
     let
-      os' = (import ./os/flake.nix).outputs { inherit nixpkgs; };
+      os' = import ./os { inherit nixpkgs; };
   in {
     inherit (os') nixosConfigurations;
   };
