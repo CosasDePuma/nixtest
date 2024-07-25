@@ -45,3 +45,4 @@
       # WPA_Supplicant
       networking.wireless.enable = lib.mkDefault true;
     };
+  }
