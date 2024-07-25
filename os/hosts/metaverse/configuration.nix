@@ -1,9 +1,10 @@
 {
+  config, pkgs,
   hostname ? "nixos",
   system   ? "x86_64-linux",
   username ? "user",
   ...
-}: { config, pkgs, ... }: {
+}: {
   imports = [
     ../../modules/system
   ];

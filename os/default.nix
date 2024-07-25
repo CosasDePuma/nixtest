@@ -1,4 +1,4 @@
-{ nixpkgs, extraModules ? [], ... }: { ... }:
+{ nixpkgs, extraModules ? [], ... }:
   let
     lib' = import ../lib { inherit nixpkgs; };
   in {

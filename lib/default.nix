@@ -1,4 +1,4 @@
-{ nixpkgs, ... }: { ... }: {
+{ nixpkgs, ... }: {
 
   # mkHost :: set: -> set
   # Generates OS configuration for `x86_64` and `aarch64` architecture types.
@@ -16,7 +16,7 @@
         name = "${opts.hostname}-${arch}";
         value = nixpkgs.lib.nixosSystem {
           system = "${arch}-linux";
-          modules = extraModules ++ [
+          modules = opts.extraModules ++ [
             # Configuration
             ../hardware-configuration.nix
             ../os/hosts/${opts.hostname}/configuration.nix

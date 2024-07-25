@@ -1,4 +1,4 @@
-{ hostname ? "nixos", ... }: { config, lib, ... }: {
+{ config, lib, hostname ? "nixos", ... }: {
   # Hostname
   networking.hostName = lib.mkDefault "${hostname}";
 
