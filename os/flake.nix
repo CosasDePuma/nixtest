@@ -8,10 +8,10 @@
     minegrub = { url = "github:Lxtharia/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs, minegrub, ... }:
     let
       lib' = ((import ../lib/flake.nix).outputs { inherit nixpkgs; }).lib;
-      third-party' = inputs;
+      third-party' = { inherit minegrub };
     in {
       nixosConfigurations = lib'.mkHost {
         hostname = "metaverse"; username = "architech";
