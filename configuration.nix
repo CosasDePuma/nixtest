@@ -46,6 +46,7 @@
   networking.hostName = hostname;
 
   # Network Manager
+  networking.useDHCP = false;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
