@@ -13,7 +13,7 @@
       };
     };
 
-    config = mkIf (cfg.nh != null) (let
+    config = lib.mkIf (cfg.nh != null) (let
         gcEnabled = builtins.hasAttr "gc" config.modules && config.modules.collector != null;
       in {
         programs.nh.enable = lib.mkDefault true;
