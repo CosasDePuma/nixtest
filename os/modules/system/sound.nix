@@ -21,7 +21,7 @@
         alsa.support32Bit = lib.mkDefault true;
         pulse.enable = lib.mkDefault true;
         jack.enable = lib.mkDefault true;
-        wireplumber.enable
+        wireplumber.enable = lib.mkDefault true;
       };
       security.rtkit.enable = lib.mkDefault (cfg.sound != "none");
     };
