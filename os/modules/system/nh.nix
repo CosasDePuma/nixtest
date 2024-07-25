@@ -1,9 +1,9 @@
 { config, lib, username ? "user", ... }:
   let
-    cfg = config.modules;
+    cfg = config.mods;
   in {
-    options = {
-      modules.nh = lib.mkOption {
+    options.mods ={
+      nh = lib.mkOption {
         default = null;
         example = /home/user/.config/nixos;
         type = with lib.types; nullOr path;
@@ -14,7 +14,7 @@
     };
 
     config = lib.mkIf (cfg.nh != null) (let
-        gcEnabled = builtins.hasAttr "gc" config.modules && config.modules.collector != null;
+        gcEnabled = builtins.hasAttr "gc" config.mods && config.mods.collector != null;
       in {
         programs.nh.enable = lib.mkDefault true;
         programs.nh.flake = lib.mkDefault cfg.nh;

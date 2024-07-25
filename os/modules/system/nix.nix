@@ -1,8 +1,8 @@
 { config, lib, ... }:
   let
-    cfg = config.modules;
+    cfg = config.mods;
   in {
-    options.modules = {
+    options.mods = {
       nix = {
         version = lib.mkOption {
           default = "unstable";

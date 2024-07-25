@@ -1,9 +1,9 @@
 { config, lib, ... }:
   let
-    cfg = config.modules;
+    cfg = config.mods;
   in {
-    options = {
-      modules.network = {
+    options.mods = {
+      network = {
         hostname = lib.mkOption {
           default = "nixos";
           example = "metaverse";

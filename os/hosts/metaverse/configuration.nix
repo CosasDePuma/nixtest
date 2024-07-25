@@ -10,7 +10,7 @@
     ../../modules/third-party/minegrub.nix
   ];
 
-  config.modules = {
+  mods = {
 
     # ---------------------------------------------
     #   System
