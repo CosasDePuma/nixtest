@@ -11,7 +11,7 @@
   outputs = { nixpkgs, ... } @ inputs:
     let
       lib' = ((import ../lib/flake.nix).outputs { inherit nixpkgs; }).lib;
-      third-party' = { inherit (inputs) minegrub; };
+      third-party' = inputs;
     in {
       nixosConfigurations = lib'.mkHost {
         hostname = "metaverse"; username = "architech";
