@@ -2,8 +2,8 @@
   let
     cfg = config.modules;
   in {
-    options = {
-      modules.system = {
+    options.modules = {
+      nix = {
         version = lib.mkOption {
           default = "unstable";
           example = "24.05";
@@ -25,10 +25,10 @@
     };
 
     config = {
-      system.stateVersion = lib.mkDefault cfg.system.version;
-      
+      system.stateVersion = lib.mkDefault cfg.nix.version;
+
       nixpkgs.config.allowUnfree = lib.mkDefault true;
-      nixpkgs.hostPlatform = lib.mkDefault cfg.system.platform;
+      nixpkgs.hostPlatform = lib.mkDefault cfg.nix.platform;
 
       nix.enable = lib.mkDefault true;
       nix.channel.enable = lib.mkDefault true;

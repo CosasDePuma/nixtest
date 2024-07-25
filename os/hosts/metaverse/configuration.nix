@@ -16,13 +16,15 @@
     #   System
     # ---------------------------------------------
 
-    network.hostname = "${hostname}";
-    network.ethernet = true;
-    network.wifi     = true;
-    nh               = "/home/${username}/.config/nixos";
-    sound            = "pipewire";
-    system.platform  = "${system}";
-    system.version   = "unstable";
+    languages        = [ "us" "es" ];                       # Keyboard layout, locale and system language
+    network.hostname = "${hostname}";                       # Hostname
+    network.ethernet = true;                                # Wired connection
+    network.wifi     = true;                                # Wireless connection
+    nh               = "/home/${username}/.config/nixos";   # Nix Helper
+    nix.platform     = "${system}";                         # Architecture and kernel
+    nix.version      = "unstable";                          # NixOS version
+    sound            = "pipewire";                          # Sound manager
+    timezone         = "Europe/Madrid";                     # Timezone
 
   };
 

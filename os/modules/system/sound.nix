@@ -2,8 +2,8 @@
   let
     cfg = config.modules;
   in {
-    options = {
-      modules.sound = lib.mkOption {
+    options.modules = {
+      sound = lib.mkOption {
         default = "none";
         example = "pipewire";
         type = with lib.types; nullOr (enum [ "none" "pulseaudio" "pipewire" ]);
