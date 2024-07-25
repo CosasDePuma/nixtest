@@ -5,7 +5,7 @@
 
   outputs = { nixpkgs, ... }:
     let
-      lib' = (import ./lib/flake.nix).outputs { inherit nixpkgs; };
+      lib' = (import ../lib/flake.nix).outputs { inherit nixpkgs; };
     in {
       nixosConfigurations = lib'.mkHost {
         hostname = "B105"; username = "architech";
