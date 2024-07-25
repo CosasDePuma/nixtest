@@ -14,7 +14,7 @@
   #   System
   # ---------------------------------------------
 
-  modules.sound = "pipewire";
+  #modules.sound = "pipewire";
 
   # ---------------------------------------------
   #   Desktop / Window Manager
