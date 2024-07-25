@@ -2,14 +2,16 @@
   description = "My own flake support library";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+  inputs.minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
-  outputs = { nixpkgs, ... }:
+
+  outputs = { nixpkgs, ... } @ inputs:
     let
 
-      # mkHost :: set: list: -> set
+      # mkHost :: set: -> set
       # Generates OS configuration for `x86_64` and `aarch64` architecture types.
       # Input options: { hostname, user, ... }
-      mkHost = options: third-party:
+      mkHost = options:
         let
           defaults = {
             hostname      = "nixos";
@@ -21,7 +23,9 @@
             name = "${opts.hostname}-${arch}";
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
-              modules = third-party ++ [
+              modules = [
+                inputs.minegrub-theme.nixosModules.default
+
                 # Configuration
                 ../hardware-configuration.nix
                 ../os/hosts/${opts.hostname}/configuration.nix
