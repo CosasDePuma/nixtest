@@ -15,13 +15,13 @@
 
     config = {
       hardware.pulseaudio.enable = lib.mkDefault (cfg.sound == "pulseaudio");
-      /*hardware.pipewire = lib.mkIf (cfg.sound == "pipewire") {
+      hardware.pipewire = lib.mkIf (cfg.sound == "pipewire") {
         enable = lib.mkDefault true;
         pulseaudio.enable = lib.mkDefault true;
         alsa.enable = lib.mkDefault true;
         alsa.support32Bit = lib.mkDefault true;
         jack.enable = lib.mkDefault true;
         security.rtkit.enable = lib.mkDefault true;
-      };*/
+      };
     };
 }
