@@ -35,8 +35,8 @@
 
     config = {
       # Hostname
-      networking.hostName = lib.mkDefault "pepe" # cfg.network.hostname;
-    }
+      networking.hostName = lib.mkDefault "pepe"; # cfg.network.hostname;
+    };
     /*
     // lib.mkIf cfg.network.ethernet {
       # Network Manager
