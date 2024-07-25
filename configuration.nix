@@ -10,8 +10,8 @@
   #  NixOS
   # ---------------------------------------------
 
+  # NixOS
   system.stateVersion = "unstable";
-  imports = [ ./hardware-configuration.nix ];
 
   # Nixpkgs
   nixpkgs.config.allowUnfree = true;
@@ -123,10 +123,10 @@
   nix.settings.auto-optimise-store = true;
 
   # Garbage collector: Nix
-  nix.gc.automatic = true;
-  nix.gc.persistent = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 7d";
+  #nix.gc.automatic = true;
+  #nix.gc.persistent = true;
+  #nix.gc.dates = "daily";
+  #nix.gc.options = "--delete-older-than 7d";
 
   # Garbage collector: NH
   programs.nh.clean.enable = true;
