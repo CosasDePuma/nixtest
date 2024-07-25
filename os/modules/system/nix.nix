@@ -1,4 +1,4 @@
-{ config, lib, system ? "x86_64-linux", ... }: {
+{ lib, system ? "x86_64-linux", ... }: {
   # NixOS
   system.stateVersion = lib.mkDefault "unstable";
 

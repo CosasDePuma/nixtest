@@ -1,10 +1,27 @@
-{ config, lib, ... }: {
-  # Pipewire
-  hardware.pulseaudio.enable = lib.mkForce false;
-  security.rtkit.enable = lib.mkDefault true;
-  services.pipewire.enable = lib.mkDefault true;
-  services.pipewire.alsa.enable = lib.mkDefault true;
-  services.pipewire.alsa.support32Bit = lib.mkDefault true;
-  services.pipewire.pulse.enable = lib.mkDefault true;
-  services.pipewire.jack.enable = lib.mkDefault true;
+{ config, lib, ... }:
+  let
+    cfg = config.modules.sound;
+  in {
+    options = {
+      sound = lib.mkOption {
+        default = "none";
+        example = "pipewire";
+        type = lib.types.enum [ "none" "pulseaudio" "pipewire" ];
+        description = ''
+          Sound system to use. Options are: none, pulseaudio, pipewire.
+        '';
+      };
+    };
+
+    config = {
+      hardware.pulseaudio.enable = lib.mkDefault (cfg.sound == "pulseaudio");
+      hardware.pipewire = lib.mkIf (cfg.sound == "pipewire") {
+        enable = lib.mkDefault true;
+        pulseaudio.enable = lib.mkDefault true;
+        alsa.enable = lib.mkDefault true;
+        alsa.support32Bit = lib.mkDefault true;
+        jack.enable = lib.mkDefault true;
+        security.rtkit.enable = lib.mkDefault true;
+      };
+    };
 }

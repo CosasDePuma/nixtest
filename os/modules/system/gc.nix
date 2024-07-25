@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ lib, ... }: {
   # Garbage collector: Nix
   nix.gc.automatic = lib.mkDefault true;
   nix.gc.persistent = lib.mkDefault true;

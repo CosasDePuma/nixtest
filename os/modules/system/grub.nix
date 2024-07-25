@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
   let
     resolutions = "1092x1080x30,1024x768x32,auto";
   in {

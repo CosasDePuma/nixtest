@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ lib, ... }: {
   # Timezone
   time.timeZone = lib.mkDefault "Europe/Madrid";
 
