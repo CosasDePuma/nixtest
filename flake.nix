@@ -20,6 +20,7 @@
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
               modules = [
+                ./hardware-configuration.nix
                 ./configuration.nix # TODO: Import from hostname config
               ];
               specialArgs = { inherit (opts) hostname username; system = "${arch}-linux"; };
