@@ -1,17 +1,15 @@
 {
   description = "All my OS in a flake";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    # Third-party modules
-    minegrub = { url = "github:Lxtharia/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
-  };
-
-  outputs = { self, nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs, ... }:
     let
       lib' = ((import ../lib/flake.nix).outputs { inherit nixpkgs; }).lib;
-      third-party' = { inherit (inputs) minegrub; };
+      third-party' = [
+        # MineGRUB: Minecraft-themed GRUB
+        ((import "github:Lxtharia/minegrub-theme").outputs { inherit nixpkgs; }).nixosModules.default
+      ];
     in {
       nixosConfigurations = lib'.mkHost {
         hostname = "metaverse"; username = "architech";

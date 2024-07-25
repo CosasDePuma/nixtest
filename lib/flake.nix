@@ -6,7 +6,7 @@
   outputs = { nixpkgs, ... }:
     let
 
-      # mkHost :: set -> set
+      # mkHost :: set: list: -> set
       # Generates OS configuration for `x86_64` and `aarch64` architecture types.
       # Input options: { hostname, user, ... }
       mkHost = options: third-party:
@@ -21,10 +21,7 @@
             name = "${opts.hostname}-${arch}";
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
-              modules = [
-                # Modules
-                third-party.minegrub.nixosModules.default
-
+              modules = third-party' ++ [
                 # Configuration
                 ../hardware-configuration.nix
                 ../os/hosts/${opts.hostname}/configuration.nix

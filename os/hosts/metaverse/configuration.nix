@@ -54,5 +54,6 @@
     lxqt.qterminal
     vim
     wget
+    (import ../../modules/scripts/rebuild.nix { inherit pkgs; })
   ];
 }
