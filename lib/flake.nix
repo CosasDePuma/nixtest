@@ -21,7 +21,7 @@
             name = "${opts.hostname}-${arch}";
             value = nixpkgs.lib.nixosSystem {
               system = "${arch}-linux";
-              modules = third-party' ++ [
+              modules = third-party ++ [
                 # Configuration
                 ../hardware-configuration.nix
                 ../os/hosts/${opts.hostname}/configuration.nix
