@@ -32,7 +32,7 @@
         # Time
         time.timeZone = cfg.timezone;
 
-        warnings = "Debugging: ${primary_language} ${locale}";
+        warnings = [ "Debugging: ${primary_language} ${locale}" ];
 
         # Language
         i18n.defaultLocale = lib.mkDefault locale;
