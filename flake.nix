@@ -11,7 +11,7 @@
   outputs = { nixpkgs, ... } @ inputs:
     let
       extraModules = [
-        minegrub-theme.nixosModules.default
+        inputs.minegrub-theme.nixosModules.default
       ];
       os' = import ./os { inherit nixpkgs extraModules; };
   in {
