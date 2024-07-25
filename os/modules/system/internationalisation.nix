@@ -35,6 +35,8 @@
         # Language
         i18n.defaultLocale = lib.mkDefault locale;
         i18n.extraLocaleSettings = lib.mkDefault {
+          LANGUAGE = lib.mkDefault locale;
+          LC_ALL = lib.mkDefault locale;
           LC_ADDRESS = lib.mkDefault locale;
           LC_IDENTIFICATION = lib.mkDefault locale;
           LC_MEASUREMENT = lib.mkDefault locale;
