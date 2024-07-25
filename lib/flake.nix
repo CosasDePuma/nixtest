@@ -3,13 +3,13 @@
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-  outputs = { nixpkgs, third-party ? {}, ... }:
+  outputs = { nixpkgs, ... }:
     let
 
       # mkHost :: set -> set
       # Generates OS configuration for `x86_64` and `aarch64` architecture types.
       # Input options: { hostname, user, ... }
-      mkHost = options:
+      mkHost = options: third-party:
         let
           defaults = {
             hostname      = "nixos";
