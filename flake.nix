@@ -9,7 +9,7 @@
     # -----------------------
     
     # MineGRUB is a Minecraft GRUB theme.
-    minegrub-theme = { url = "github:Lxtharia/minegrub-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
+    minegrub-theme = { url = "github:Lxtharia/minegrub-world-sel-theme"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
   outputs = { nixpkgs, ... } @ inputs:
