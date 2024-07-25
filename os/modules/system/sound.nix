@@ -3,7 +3,7 @@
     cfg = config.modules.sound;
   in {
     options = {
-      sound = lib.mkOption {
+      modules.sound = lib.mkOption {
         default = "none";
         example = "pipewire";
         type = lib.types.enum [ "none" "pulseaudio" "pipewire" ];
