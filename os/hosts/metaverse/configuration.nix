@@ -16,10 +16,13 @@
     #   System
     # ---------------------------------------------
 
-    nh = "/home/${username}/.config/nixos";
-    sound = "pipewire";
-    system.platform = "${system}";
-    system.version = "unstable";
+    network.hostname = "${hostname}";
+    network.ethernet = true;
+    network.wifi     = true;
+    nh               = "/home/${username}/.config/nixos";
+    sound            = "pipewire";
+    system.platform  = "${system}";
+    system.version   = "unstable";
 
   };
 

@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ config, lib, ... }: { # TODO: Move to GRUB module as an extra (?)
   # MineGRUB: Minecraft GRUB theme
   boot.loader.grub.minegrub-theme.enable = lib.mkDefault true;
   boot.loader.grub.minegrub-theme.splash = lib.mkDefault "";

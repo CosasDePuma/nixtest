@@ -6,14 +6,16 @@
       modules.sound = lib.mkOption {
         default = "none";
         example = "pipewire";
-        type = lib.types.enum [ "none" "pulseaudio" "pipewire" ];
+        type = with lib.types; nullOr (enum [ "none" "pulseaudio" "pipewire" ]);
         description = ''
-          Sound system to use. Options are: none, pulseaudio, pipewire.
+          Sound system to use. Options are: `none`, `pulseaudio`, `pipewire`.
         '';
       };
     };
 
-    config = {
+    config = let
+      disabled = cfg.sound == null || cfg.sound == "none";
+    in {
       hardware.pulseaudio.enable = lib.mkDefault (cfg.sound == "pulseaudio");
 
       services.pipewire = lib.mkIf (cfg.sound == "pipewire") {
@@ -25,6 +27,6 @@
         wireplumber.enable = lib.mkDefault true;
       };
 
-      security.rtkit.enable = lib.mkDefault (cfg.sound != "none");
+      security.rtkit.enable = lib.mkDefault (!disabled);
     };
 }
