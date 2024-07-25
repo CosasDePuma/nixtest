@@ -7,7 +7,7 @@
         hostname = lib.mkOption {
           default = "nixos";
           example = "metaverse";
-          type = lib.types.strMatch "^$|^[[:alnum:]]([[:alnum:]_-]{0,61}[[:alnum:]])?$";
+          type = lib.types.strMatching "^$|^[[:alnum:]]([[:alnum:]_-]{0,61}[[:alnum:]])?$";
           description = ''
             The hostname of the system.
           '';
