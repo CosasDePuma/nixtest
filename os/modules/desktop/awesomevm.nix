@@ -24,6 +24,7 @@
           description = ''
             The AwesomeVM configuration file.
           '';
+        };
       };
     };
 
