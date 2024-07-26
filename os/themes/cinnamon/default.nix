@@ -1,6 +1,6 @@
 { config, lib, ... }:
   let
-    cfg = within.theme;
+    cfg = config.within.theme;
   in {
     imports = [
       ../../modules/desktop
