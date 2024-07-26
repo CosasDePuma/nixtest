@@ -7,17 +7,12 @@
 }: {
   imports = [
     ../../modules/system
-    ../../modules/system/boot.nix
   ];
 
   within = {
-
-    # ---------------------------------------------
-    #   System
-    # ---------------------------------------------
-
     boot.loader            = "grub";                            # Bootloader
     boot.theme             = "minegrub";                        # Boot theme (Only for GRUB)
+    gc                     = "daily";                           # Garbage collector
     languages              = [ "us" "es" ];                     # Keyboard layout, locale and system language
     network.hostname       = "${hostname}";                     # Hostname
     network.networkmanager = true;                              # Managed internet connection
@@ -26,7 +21,7 @@
     nix.version            = "unstable";                        # NixOS version
     sound                  = "pipewire";                        # Sound manager
     timezone               = "Europe/Madrid";                   # Timezone
-
+    user.name              = "${username}";                     # User
   };
 
   # ---------------------------------------------
@@ -52,16 +47,6 @@
   services.xserver.windowManager.awesome.luaModules = with pkgs.luaPackages; [
     luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
   ];
-
-  # ---------------------------------------------
-  #  User
-  # ---------------------------------------------
-
-  users.users."${username}" = {
-    isNormalUser = true;
-    description = "Main user";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
 
   # ---------------------------------------------
   #  Programs
