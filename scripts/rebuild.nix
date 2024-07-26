@@ -13,4 +13,3 @@
      os switch -H "$(hostname)-$(uname -m)" -- "$@"
     ${pkgs.coreutils-fullc}/bin/test "$ISGIT" -eq 0 && ${pkgs.git}/bin/git -C "$FLAKE" restore
   ''
-  aa
