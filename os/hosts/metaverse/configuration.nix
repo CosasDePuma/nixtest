@@ -22,7 +22,7 @@
     nix.version              = "unstable";                        # NixOS version
     sound                    = "pipewire";                        # Sound manager
     timezone                 = "Europe/Madrid";                   # Timezone
-    theme                    = "cinnamon";                        # Cinnamon (Desktop environment)
+    theme                    = "cinnamo";                         # Cinnamoroll (Desktop environment)
     user.name                = "${username}";                     # User
   };
 
