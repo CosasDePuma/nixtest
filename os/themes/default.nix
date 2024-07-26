@@ -16,7 +16,7 @@
       };
     };
 
-    config._private = {
+    config.private = {
       cinnamo.enable = (cfg.theme == "cinnamo");
     };
   }

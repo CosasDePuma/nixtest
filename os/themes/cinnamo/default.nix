@@ -1,7 +1,7 @@
-{ config, lib, ... }: let cfg = config._private.cinnamo; in {
+{ config, lib, ... }: let cfg = config.private.cinnamo; in {
   imports = [ ../../modules ];
 
-  options._private.cinnamo.enable = lib.mkEnableOption "cinnamoroll desktop environment";
+  options.private.cinnamo.enable = lib.mkEnableOption "cinnamoroll desktop environment";
 
   config = lib.mkIf cfg.enable {
     within.desktop.awesomevm.enable = lib.mkDefault true;
