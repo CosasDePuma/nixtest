@@ -8,6 +8,7 @@
   imports = [
     ../../modules/desktop
     ../../modules/system
+    ../../themes/cinnamon
   ];
 
   within = {
@@ -25,6 +26,7 @@
     nix.version              = "unstable";                        # NixOS version
     sound                    = "pipewire";                        # Sound manager
     timezone                 = "Europe/Madrid";                   # Timezone
+    theme.cinnamon.enable    = true;                              # Cinnamon (Desktop environment)
     user.name                = "${username}";                     # User
   };
 
