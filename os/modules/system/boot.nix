@@ -32,12 +32,10 @@
       minegrubInstalled = builtins.hasAttr "minegrub-theme" config.boot.loader.grub;
     in lib.mkMerge [
       {
-        assertions = [
-          (if cfg.boot.theme == "minegrub" && !minegrubInstalled
-            then "GRUB theme 'minegrub' is not avaliable. Please, import the 'minegrub-theme' module."
-            else null
-          )
-        ];
+        assertions = [{
+          assertion = cfg.boot.theme == "minegrub" && !minegrubInstalled;
+          message = "GRUB theme 'minegrub' is not avaliable. Please, import the 'minegrub-theme' module.";
+        }];
 
         warnings = [
           (if cfg.boot.loader != "grub" && themed
