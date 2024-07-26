@@ -28,7 +28,7 @@
       {
         # Hostname
         networking.hostName = lib.mkDefault cfg.network.hostname;
-      } (lib.mkIf cfg.network.ethernet {
+      } (lib.mkIf cfg.network.networkmanager {
         # Network Manager
         networking.useDHCP = lib.mkDefault false;
         networking.networkmanager.enable = lib.mkDefault true;
