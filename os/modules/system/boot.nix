@@ -46,6 +46,7 @@
         # GRUB
         boot.loader.grub.enable = lib.mkDefault true;
         boot.loader.grub.efiSupport = lib.mkDefault true;
+        boot.loader.grub.useOSProber = lib.mkDefault true;
         boot.loader.grub.devices = lib.mkDefault [ "nodev" ];
         boot.loader.grub.gfxmodeEfi = lib.mkDefault "${resolutions}";
         boot.loader.grub.gfxmodeBios = lib.mkDefault "${resolutions}";

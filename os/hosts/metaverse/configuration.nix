@@ -16,7 +16,7 @@
     #   System
     # ---------------------------------------------
 
-    boot.loader            = "systemd";                            # Bootloader
+    boot.loader            = "grub";                            # Bootloader
     boot.theme             = "minegrub";                        # Boot theme (Only for GRUB)
     languages              = [ "us" "es" ];                     # Keyboard layout, locale and system language
     network.hostname       = "${hostname}";                     # Hostname
