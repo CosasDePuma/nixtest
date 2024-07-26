@@ -1,7 +1,7 @@
 { config, lib, ... }:
   let
     cfg = config.within;
-  in {
+  in rec {
     options.within = {
       boot = {
         loader = lib.mkOption {
