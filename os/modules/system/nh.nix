@@ -14,7 +14,7 @@
     };
 
     config = lib.mkIf (cfg.nh != null) (let
-        gcEnabled = builtins.hasAttr "gc" config.within && config.within.collector != null;
+        gcEnabled = builtins.hasAttr "gc" cfg && cfg.gc != null;
       in lib.mkMerge [
         {
           # Nix Helper
