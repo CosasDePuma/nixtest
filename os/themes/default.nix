@@ -2,10 +2,6 @@
   let
     cfg = config.within.theme;
   in {
-    imports = [
-      ../../modules/desktop
-    ];
-    
     options.within = {
       theme = lib.mkOption {
         default = null;
