@@ -10,6 +10,6 @@
     # Check if flake is a git repository, add changes, switch to the new system, and restore changes
     ISGIT="$(${pkgs.git}/bin/git -C "$FLAKE" rev-parse --is-inside-work-tree >/dev/null 2>&1 ; echo "$?")"
     ${pkgs.coreutils-full}/bin/test "$ISGIT" -eq 0 && ${pkgs.git}/bin/git -C "$FLAKE" add -A
-     os switch -H "$(hostname)-$(uname -m)" -- "$@"
+    eval "$REBUILD"
     ${pkgs.coreutils-full}/bin/test "$ISGIT" -eq 0 && ${pkgs.git}/bin/git -C "$FLAKE" restore
   ''
