@@ -1,6 +1,4 @@
-{ config, lib, ... }:
-  let cfg = config._private.cinnamon;
-{
+{ config, lib, ... }: let cfg = config._private.cinnamon; in {
   imports = [ ../../modules ];
 
   options._private.cinnamon.enable = lib.mkEnableOption "cinnamoroll desktop environment";
