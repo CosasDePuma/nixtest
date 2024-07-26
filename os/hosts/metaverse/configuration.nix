@@ -5,7 +5,7 @@
   username ? "user",
   ...
 }: {
-  imports = [ ../../modules ../../themes ];
+  imports = [ ../../modules ];
 
   within = {
     boot.loader              = "grub";                            # GRUB (Bootloader)
