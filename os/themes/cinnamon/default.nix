@@ -6,7 +6,7 @@
       ../../modules/desktop
     ];
 
-    options.theme = {
+    options.within.theme = {
       cinnamon = {
         enable = lib.mkOption {
           default = false;
