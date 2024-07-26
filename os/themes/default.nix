@@ -2,19 +2,21 @@
   let
     cfg = config.within.theme;
   in {
+    imports = [ ./cinnamo ];
+
     options.within = {
       theme = lib.mkOption {
         default = null;
-        example = "cinnamon";
-        type = with lib.types; nullOr (enum ["none" "cinnamon"]);
+        example = "cinnamo";
+        type = with lib.types; nullOr (enum ["none" "cinnamo"]);
         description = ''
           Desktop environment to use. Theme and dependencies will be installed.
-          Options are: `none`, `cinnamon`.
+          Options are: `none`, `cinnamo`.
         '';
       };
     };
 
-    config =
-      if cfg.theme == "cinnamon" then import ./cinnamon /*{ inherit lib; }*/
-      else {};
+    config = {
+      _private.cinnamo.enable = (cfg.theme == "cinnamo");
+    };
   }
