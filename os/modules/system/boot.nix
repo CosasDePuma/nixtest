@@ -30,12 +30,7 @@
       resolutions = "1092x1080x30,1024x768x32,auto";
       themed = cfg.boot.theme != null && cfg.boot.theme != "none";
     in lib.mkMerge [{
-        warnings = [
-          (if cfg.boot.loader != "grub" && themed
-            then "GRUB theme is only available with GRUB bootloader. Ignoring `within.boot.theme`."
-            else null
-          )
-        ];
+       
 
         boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
       } (lib.mkIf (cfg.boot.loader == "systemd") {
