@@ -15,8 +15,8 @@
     #   System
     # ---------------------------------------------
 
-    boot.loader            = "systemd";                            # Bootloader
-    boot.theme             = "minegrub";                        # Boot theme (Only for GRUB)
+    booty.loader            = "systemd";                            # Bootloader
+    booty.theme             = "minegrub";                        # Boot theme (Only for GRUB)
     languages              = [ "us" "es" ];                     # Keyboard layout, locale and system language
     network.hostname       = "${hostname}";                     # Hostname
     network.networkmanager = true;                              # Managed internet connection
