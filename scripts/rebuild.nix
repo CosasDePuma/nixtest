@@ -3,7 +3,7 @@
     # Set the flake path
     test -n "$FLAKE" || FLAKE="/etc/nixos"
     # Check the system configuration
-    CONFIG="$(${pkgs.net-tools}/bin/hostname)-$(${pkgs.coreutils-full}/bin/uname -m)"
+    CONFIG="$(${pkgs.nettools}/bin/hostname)-$(${pkgs.coreutils-full}/bin/uname -m)"
     # Check which update method is available
     REBUILD="${pkgs.sudo}/bin/sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$CONFIG $@"
     command -v nh >/dev/null 2>&1 && REBUILD="${pkgs.nh}/bin/nh os switch -H $CONFIG -- $@"
