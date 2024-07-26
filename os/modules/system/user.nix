@@ -7,7 +7,7 @@
         name = lib.mkOption {
           default = "user";
           example = "god";
-          type = lib.types.passwdEntry;
+          type = lib.types.str;
           description = ''
             The name of the user.
           '';
@@ -30,4 +30,4 @@
         initialPassword = lib.mkDefault "Changeme123!";
       };
     };
-}
+  }
