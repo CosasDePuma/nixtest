@@ -47,11 +47,11 @@
         ];
 
         boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
-      } (lib.mkIf cfg.boot.loader == "systemd" {
+      } (lib.mkIf (cfg.boot.loader == "systemd") {
         # systemd-boot
         boot.loader.systemd-boot.enable = lib.mkDefault true;
         boot.loader.grub.enable = lib.mkDefault false;
-      }) (lib.mkIf cfg.boot.loader == "grub" {
+      }) (lib.mkIf (cfg.boot.loader == "grub") {
         # GRUB
         boot.loader.grub.enable = lib.mkDefault true;
         boot.loader.grub.efiSupport = lib.mkDefault true;
@@ -59,7 +59,7 @@
         boot.loader.grub.gfxmodeEfi = lib.mkDefault "${resolutions}";
         boot.loader.grub.gfxmodeBios = lib.mkDefault "${resolutions}";
         boot.loader.systemd-boot.enable = lib.mkDefault false;
-      }) (lib.mkIf cfg.boot.theme == "minegrub" {
+      }) (lib.mkIf (cfg.boot.theme == "minegrub") {
         # GRUB Theme: MineGRUB
         boot.loader.grub.minegrub-theme.enable = lib.mkDefault true;
         boot.loader.grub.minegrub-theme.splash = lib.mkDefault "";
