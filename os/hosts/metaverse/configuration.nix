@@ -7,6 +7,7 @@
 }: {
   imports = [
     ../../modules/system
+    ../../modules/system/boot.nix
   ];
 
   within = {
