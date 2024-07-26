@@ -29,6 +29,6 @@
         isSystemUser = lib.mkDefault false;
         initialPassword = lib.mkDefault "Changeme123!";
       };
-      services.displayManager.autoLogin.user = "${username}";
+      services.displayManager.autoLogin.user = "${cfg.user.name}";
     };
   }
