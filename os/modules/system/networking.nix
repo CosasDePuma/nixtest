@@ -13,21 +13,12 @@
           '';
         };
 
-        ethernet = lib.mkOption {
+        networkmanager = lib.mkOption {
           default = true;
           example = false;
           type = lib.types.bool;
           description = ''
-            Enable wired networking.
-          '';
-        };
-
-        wifi = lib.mkOption {
-          default = true;
-          example = false;
-          type = lib.types.bool;
-          description = ''
-            Enable wireless networking.
+            Enable NetworkManager.
           '';
         };
       };
@@ -42,9 +33,6 @@
         networking.useDHCP = lib.mkDefault false;
         networking.networkmanager.enable = lib.mkDefault true;
         programs.nm-applet.enable = lib.mkDefault true;
-      }) (lib.mkIf cfg.network.wifi {
-        # WPA_Supplicant
-        networking.wireless.enable = lib.mkDefault true;
       })
     ];
   }
