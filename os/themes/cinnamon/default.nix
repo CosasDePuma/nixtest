@@ -8,7 +8,7 @@
 
     options.theme = {
       cinnamon = {
-        enable = mkOption {
+        enable = lib.mkOption {
           default = false;
           example = true;
           type = lib.types.bool;
