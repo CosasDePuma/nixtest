@@ -14,7 +14,7 @@
       };
     };
 
-    config = /*
-      if cfg.theme == "cinnamon" then import ./cinnamon { inherit lib; }
-      else */ {};
+    config =
+      if cfg.theme == "cinnamon" then import ./cinnamon /*{ inherit lib; }*/
+      else {};
   }
