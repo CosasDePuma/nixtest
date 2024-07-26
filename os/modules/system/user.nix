@@ -7,7 +7,7 @@
         name = lib.mkOption {
           default = "user";
           example = "god";
-          type = lib.types.str;
+          type = lib.types.singleLineStr;
           description = ''
             The name of the user.
           '';
