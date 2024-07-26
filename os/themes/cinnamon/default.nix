@@ -5,21 +5,20 @@
     imports = [
       ../../modules/desktop
     ];
-
-    options.within.theme = {
-      cinnamon = {
-        enable = lib.mkOption {
-          default = false;
-          example = true;
-          type = lib.types.bool;
-          description = "Enable the Cinnamon desktop environment.";
-        };
+    
+    options.within = {
+      theme = lib.mkOption {
+        default = null;
+        example = "cinnamon";
+        type = with lib.types; nullOr (enum ["none" "cinnamon"]);
+        description = ''
+          Desktop environment to use. Theme and dependencies will be installed.
+          Options are: `none`, `cinnamon`.
+        '';
       };
     };
 
-    config = lib.mkIf cfg.cinnamon.enable {
-      within.desktop.awesomevm.enable = lib.mkDefault true;
-      within.desktop.awesomevm.rc = lib.mkDefault (builtins.readFile ./awesome.lua);
-
-    };
-}
+    config =
+      if cfg.theme == "cinnamon" then import ./cinnamon { inherit lib; }
+      else {};
+  }
