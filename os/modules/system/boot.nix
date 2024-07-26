@@ -1,7 +1,7 @@
 { config, lib, ... }:
   let
     cfg = config.within;
-  in rec {
+  in {
     options.within = {
       boot = {
         loader = lib.mkOption {
@@ -29,17 +29,10 @@
     config = let
       resolutions = "1092x1080x30,1024x768x32,auto";
       themed = cfg.boot.theme != null && cfg.boot.theme != "none";
-      minegrubInstalled = builtins.hasAttr "minegrub-theme" config.boot.loader.grub;
-    in lib.mkMerge [
-      {
-        assertions = [{
-          assertion = cfg.boot.theme == "minegrub" && !minegrubInstalled;
-          message = "GRUB theme 'minegrub' is not avaliable. Please, import the 'minegrub-theme' module.";
-        }];
-
+    in lib.mkMerge [{
         warnings = [
           (if cfg.boot.loader != "grub" && themed
-            then "GRUB theme is only available with GRUB bootloader."
+            then "GRUB theme is only available with GRUB bootloader. Ignoring `within.boot.theme`."
             else null
           )
         ];
@@ -53,6 +46,7 @@
         # GRUB
         boot.loader.grub.enable = lib.mkDefault true;
         boot.loader.grub.efiSupport = lib.mkDefault true;
+        bool.loader.grub.useOSProber = lib.mkDefault true;
         boot.loader.grub.devices = lib.mkDefault [ "nodev" ];
         boot.loader.grub.gfxmodeEfi = lib.mkDefault "${resolutions}";
         boot.loader.grub.gfxmodeBios = lib.mkDefault "${resolutions}";
