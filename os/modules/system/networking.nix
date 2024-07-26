@@ -42,9 +42,9 @@
         networking.useDHCP = lib.mkDefault false;
         networking.networkmanager.enable = lib.mkDefault true;
         programs.nm-applet.enable = lib.mkDefault true;
+      }) (lib.mkIf cfg.network.wifi {
+        # WPA_Supplicant
+        networking.wireless.enable = lib.mkDefault true;
       })
-    ];/*// lib.mkIf cfg.network.wifi {
-      # WPA_Supplicant
-      networking.wireless.enable = lib.mkDefault true;
-    };*/
+    ];
   }
