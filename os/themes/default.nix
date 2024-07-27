@@ -2,6 +2,7 @@
   let
     cfg = config.within.theme;
   in {
+    imports = [ ./cinnamo ];
 
     options.within = {
       theme = lib.mkOption {

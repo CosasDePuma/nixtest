@@ -1,5 +1,4 @@
 { config, lib, ... }: let cfg = config.private.cinnamo; in {
-  imports = [ ../../modules ];
 
   options.private.cinnamo.enable = lib.mkEnableOption "cinnamoroll desktop environment";
 
