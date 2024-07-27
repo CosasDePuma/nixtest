@@ -24,8 +24,8 @@
           description = ''
             The AwesomeVM configuration file.
           '';
-        };
-      };*/
+        };*/
+      };
     };
 
     config = lib.mkIf (config.within.desktop.awesomevm.test) {
