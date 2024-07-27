@@ -26,7 +26,8 @@ require("awful.hotkeys_popup.keys")
 editor   = os.getenv("EDITOR")   or "nvim"
 terminal = os.getenv("TERMINAL") or "kitty"
 nixoscfg = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
-modkey   = "Mod4" -- Super key (Mod1 is Alt key)
+modkey   = "Mod4" -- Super key
+altkey   = "Mod1" -- Alt key
 
 -- -------------------------------
 --   Context Menu
@@ -40,8 +41,7 @@ contextmenu = awful.menu({ items = {
     { "logout", function() awesome.quit() end }
 }})
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                    menu = contextmenu })
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = contextmenu }) -- FIXME: Delete or replace
 
 -- -------------------------------
 --   Error Handling
@@ -292,7 +292,7 @@ globalkeys = gears.table.join(
               {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ altkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
