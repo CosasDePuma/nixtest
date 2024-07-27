@@ -6,6 +6,6 @@
 
     config = lib.mkIf (cfg.enable && builtins.hasAttr "whithin" config) {
       within.desktop.awesomevm.enable = lib.mkDefault true;
-      within.desktop.awesomevm.rc = lib.mkDefault (builtins.readFile ./awesomevm.rc);
+      within.desktop.awesomevm.rc = lib.mkDefault (builtins.readFile ./awesomevm.lua);
     };
   }
