@@ -4,7 +4,7 @@
   in {
     options.within.desktop = {
       awesomevm = {
-        test = lib.mkOption {
+        enable= lib.mkOption 
           default = false;
           example = true;
           type = lib.types.bool;
@@ -28,7 +28,7 @@
       };
     };
 
-    config = lib.mkIf (config.within.desktop.awesomevm.test) {
+    config = lib.mkIf config.within.desktop.awesomevm.enable {
       services.xserver.windowManager.awesome.enable = lib.mkDefault true;
     };
     /*
