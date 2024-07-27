@@ -28,7 +28,7 @@
       };
     };
 
-    config = lib.mkIf cfg.awesomevm.enable {
+    config = {
       services.xserver.windowManager.awesome.enable = lib.mkDefault true;
     };
     /*
