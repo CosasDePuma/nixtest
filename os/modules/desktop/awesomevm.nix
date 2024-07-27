@@ -5,6 +5,14 @@
     options.within.desktop = {
       awesomevm = {
         enable = lib.mkEnableOption "AwesomeVM (Window manager)";
+        test = lib.mkOption {
+          default = false;
+          example = true;
+          type = lib.types.bool;
+          description = ''
+            The AwesomeVM configuration file.
+          '';
+        };
 
         rc = lib.mkOption {
           default = null;
