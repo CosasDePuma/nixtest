@@ -29,7 +29,7 @@
       };
     };
 
-    config = lib.mkIf (config.within.desktop.awesomevm.enable) {
+    config = lib.mkIf (config.within.desktop.awesomevm.test) {
       services.xserver.windowManager.awesome.enable = lib.mkDefault true;
     };
     /*

@@ -13,7 +13,6 @@
   within = {
     boot.loader              = "grub";                            # GRUB (Bootloader)
     boot.theme               = "minegrub";                        # Boot theme (Only for GRUB)
-    desktop.awesomevm.enable = true;                              # AwesomeVM (Window manager)
     display.manager          = "sddm";                            # SSDM (Display manager)
     display.autologin        = true;                              # Auto-login
     gc                       = "daily";                           # Garbage collector
