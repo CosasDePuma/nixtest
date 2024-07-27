@@ -4,7 +4,6 @@
   in {
     options.within.desktop = {
       awesomevm = {
-        enable = lib.mkEnableOption "AwesomeVM (Window manager)";
         test = lib.mkOption {
           default = false;
           example = true;
