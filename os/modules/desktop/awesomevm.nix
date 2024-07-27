@@ -20,7 +20,7 @@
             -- Theme
             beautiful.init("/etc/xdg/awesome/themes/default/theme.lua")
           '';
-          type = with lib.types; nullOr string;
+          type = with lib.types; nullOr str;
           description = ''
             The AwesomeVM configuration file.
           '';
