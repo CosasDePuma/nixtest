@@ -17,6 +17,7 @@
     };
 
     config.private = {
+      networking.hostName = if cfg.theme == "cinnamo" then "cinnamoroll" else config.private.networking.hostName;
       #cinnamo.enable = (cfg.theme == "cinnamo");
     };
   }
