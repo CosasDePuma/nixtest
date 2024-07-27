@@ -35,7 +35,7 @@
         services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
           luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
         ]);
-      } (lib.mkIf (cfg.awesomevm.rc != ${assert cfg.awersome.rc == null; null}) {
+      } (lib.mkIf (cfg.awesomevm.rc != "${assert cfg.awersome.rc == null; null}") {
         environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
       })
     ]);
