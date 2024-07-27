@@ -30,7 +30,7 @@
 
     config = {
       services.xserver.windowManager.awesome.enable = true;
-    }
+    };
     /*
     lib.mkIf (cfg.awesomevm.enable) (
       lib.mkMerge [{
