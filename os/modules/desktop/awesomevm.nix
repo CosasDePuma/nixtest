@@ -38,12 +38,12 @@
         #services.displayManager.defaultSession = lib.mkDefault "none+awesome";
 
         # AwesomeVM
-        #services.xserver.windowManager.awesome.enable = lib.mkDefault true;
-        #services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
-        #  luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
-        #]);
+        services.xserver.windowManager.awesome.enable = lib.mkDefault true;
+        services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
+          luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
+        ]);
       } (lib.mkIf (cfg.awesomevm.rc != null) {
-        #environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
+        environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
       })
     ]);
   }
