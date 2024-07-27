@@ -38,7 +38,7 @@
         #services.displayManager.defaultSession = lib.mkDefault "none+awesome";
 
         # AwesomeVM
-        services.xserver.windowManager.awesome.enable = lib.mkDefault true;
+        services.xserver.windowManager.awesome.enable = true;
         #services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
         #  luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
         #]);
