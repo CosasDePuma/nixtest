@@ -12,7 +12,7 @@
             The AwesomeVM configuration file.
           '';
         };
-
+/*
         rc = lib.mkOption {
           default = null;
           example = ''
@@ -25,7 +25,7 @@
             The AwesomeVM configuration file.
           '';
         };
-      };
+      };*/
     };
 
     config = lib.mkIf (config.within.desktop.awesomevm.test) {
