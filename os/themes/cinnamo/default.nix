@@ -1,4 +1,4 @@
-{ config, lib, ... }: let cfg = config.private.cinnamo; in {
+{ config, lib, ... }: let cfg = config._private.theme.cinnamo; in {
 
   options._private.theme.cinnamo.enable = lib.mkEnableOption "cinnamoroll desktop environment";
 
