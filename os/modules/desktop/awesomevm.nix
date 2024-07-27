@@ -4,7 +4,7 @@
   in {
     options.within.desktop = {
       awesomevm = {
-        enable= lib.mkOption 
+        enable = lib.mkOption {
           default = false;
           example = true;
           type = lib.types.bool;
@@ -12,6 +12,15 @@
             The AwesomeVM configuration file.
           '';
         };
+      };
+    };
+
+    config = lib.mkIf config.within.desktop.awesomevm.enable {
+      services.xserver.windowManager.awesome.enable = lib.mkDefault true;
+    };
+  }
+
+
 /*
         rc = lib.mkOption {
           default = null;
@@ -25,12 +34,10 @@
             The AwesomeVM configuration file.
           '';
         };*/
-      };
-    };
 
-    config = lib.mkIf config.within.desktop.awesomevm.enable {
-      services.xserver.windowManager.awesome.enable = lib.mkDefault true;
-    };
+
+
+    
     /*
     lib.mkIf (cfg.awesomevm.enable) (
       lib.mkMerge [{
@@ -51,4 +58,3 @@
       })
     ]);
     */
-  }
