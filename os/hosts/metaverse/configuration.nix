@@ -26,6 +26,7 @@
     timezone                 = "Europe/Madrid";                   # Timezone
     theme                    = "cinnamo";                         # Cinnamoroll (Desktop environment)
     user.name                = "${username}";                     # User
+    desktop.awesomevm.test   = true;                              # AwesomeVM (Window manager)
   };
 
   # ---------------------------------------------
