@@ -23,9 +23,9 @@ require("awful.hotkeys_popup.keys")
 --   Variables
 -- -------------------------------
 
-editor   = os.getenv("EDITOR")   or "${pkgs.neovim}/bin/nvim"
-terminal = os.getenv("TERMINAL") or "${pkgs.kitty}/bin/kitty"
-nixoscfg = os.getenv("FLAKE")    or "/etc/nixos"
+editor   = os.getenv("EDITOR")   or "nvim"
+terminal = os.getenv("TERMINAL") or "kitty"
+nixoscfg = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
 modkey   = "Mod4" -- Super key (Mod1 is Alt key)
 
 -- -------------------------------
@@ -247,7 +247,7 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () contextmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
