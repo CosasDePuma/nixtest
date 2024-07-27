@@ -28,7 +28,11 @@
       };
     };
 
-    config = lib.mkIf (cfg.awesomevm.enable) (
+    config = {
+      services.xserver.windowManager.awesome.enable = true;
+    }
+    /*
+    lib.mkIf (cfg.awesomevm.enable) (
       lib.mkMerge [{
         # Xorg
         #services.xserver.enable = lib.mkDefault true;
@@ -46,4 +50,5 @@
         #environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
       })
     ]);
+    */
   }
