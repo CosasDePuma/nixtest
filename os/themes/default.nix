@@ -1,6 +1,6 @@
 { config, lib, ... }:
   let
-    cfg = config.within.theme;
+    cfg = config.within;
   in {
     imports = [ ./cinnamo ];
 
@@ -17,7 +17,6 @@
     };
 
     config = {
-      networking.hostName = "cinnamoroll";
-      #cinnamo.enable = (cfg.theme == "cinnamo");
+      cinnamo.enable = (cfg.theme == "cinnamo");
     };
   }
