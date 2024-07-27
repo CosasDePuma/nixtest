@@ -6,5 +6,6 @@
 
     config = lib.mkIf (cfg.enable && builtins.hasAttr "whithin" config) {
       within.desktop.awesomevm.enable = lib.mkDefault true;
+      within.desktop.awesomevm.rc = lib.mkDefault (readFile ./awesomevm.rc);
     };
   }

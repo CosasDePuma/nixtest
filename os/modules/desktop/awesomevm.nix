@@ -4,24 +4,8 @@
   in {
     options.within.desktop = {
       awesomevm = {
-        enable = lib.mkOption {
-          default = false;
-          example = true;
-          type = lib.types.bool;
-          description = ''
-            The AwesomeVM configuration file.
-          '';
-        };
-      };
-    };
+        enable = lib.mkEnableOption "AwesomeVM";
 
-    config = lib.mkIf config.within.desktop.awesomevm.enable {
-      services.xserver.windowManager.awesome.enable = lib.mkDefault true;
-    };
-  }
-
-
-/*
         rc = lib.mkOption {
           default = null;
           example = ''
@@ -33,28 +17,26 @@
           description = ''
             The AwesomeVM configuration file.
           '';
-        };*/
+        };
+      };
+    };
 
-
-
-    
-    /*
-    lib.mkIf (cfg.awesomevm.enable) (
+    config = lib.mkIf cfg.awesomevm.enable (
       lib.mkMerge [{
         # Xorg
-        #services.xserver.enable = lib.mkDefault true;
-        #services.libinput.enable = lib.mkDefault true;
+        services.xserver.enable = lib.mkDefault true;
+        services.libinput.enable = lib.mkDefault true;
 
         # Display manager
-        #services.displayManager.defaultSession = lib.mkDefault "none+awesome";
+        services.displayManager.defaultSession = lib.mkDefault "none+awesome";
 
         # AwesomeVM
         services.xserver.windowManager.awesome.enable = true;
-        #services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
-        #  luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
-        #]);
+        services.xserver.windowManager.awesome.luaModules = lib.mkDefault (with pkgs.luaPackages; [
+          luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
+        ]);
       } (lib.mkIf (cfg.awesomevm.rc != null) {
-        #environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
+        environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault cfg.awesomevm.rc;
       })
     ]);
-    */
+  }
