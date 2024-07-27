@@ -36,7 +36,7 @@
           luarocks luadbi-mysql # FIXME: Maybe luadbi-mysql is not necessary
         ]);
         environment.etc."xdg/awesome/rc.lua".text = lib.mkDefault "-- test"; #cfg.awesomevm.rc;
-        networkmanager.hostName = lib.mkDefault "AwesomeVM";
+        networking.hostName = lib.mkDefault "AwesomeVM";
       } (lib.mkIf (cfg.awesomevm.rc != null) {
       })
     ]);
