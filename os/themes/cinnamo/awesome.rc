@@ -25,7 +25,7 @@ require("awful.hotkeys_popup.keys")
 
 editor   = os.getenv("EDITOR")   or "nvim"
 terminal = os.getenv("TERMINAL") or "kitty"
-nixoscfg = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
+config   = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
 modkey   = "Mod4" -- Super key
 altkey   = "Mod1" -- Alt key
 
@@ -58,6 +58,20 @@ do
 end
 
 -- -------------------------------
+--  Context menu
+-- -------------------------------
+
+contextmenu = awful.menu({
+    items = {
+        { "terminal",    function() awful.spawn(terminal) end },
+        { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+        { "edit config", function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
+        { "reload",      awesome.restart },
+        { "quit",        function() awesome.quit() end }
+    }
+})
+
+-- -------------------------------
 --   Layouts
 -- -------------------------------
 
@@ -68,25 +82,10 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
 }
 
 -- TODO: Check this
---beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+                                     menu = contextmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -211,7 +210,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () contextmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
