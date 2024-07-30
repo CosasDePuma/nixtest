@@ -122,7 +122,7 @@ keybindings = gears.table.join(
               {description = "focus next window", group = "window"}),
     -- focus previous window
     awful.key({ mainkey }, "k", function() awful.client.focus.byidx(-1) end,
-              {description = "focus previous window", group = "window"})
+              {description = "focus previous window", group = "window"}),
     
     -- | Workspace
     -- focus next workspace
