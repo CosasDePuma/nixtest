@@ -37,6 +37,12 @@ scndkey  = scndkey
 menubar.utils.terminal = terminal
 
 -- -------------------------------
+--   Theme
+-- -------------------------------
+
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+
+-- -------------------------------
 --   Error Handling
 -- -------------------------------
 
@@ -74,12 +80,6 @@ contextmenu = awful.menu({
         { "quit",        function() awesome.quit() end }
     }
 })
-
--- launcher
--- TODO: Remove this
-launcher = awful.widget.launcher({ menu = contextmenu })
--- TODO: Check this
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- -------------------------------
 --   Layouts
@@ -206,6 +206,38 @@ keyboardlayout = awful.widget.keyboardlayout()
 -- clock
 textclock = wibox.widget.textclock()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- workspaces
 -- TODO: Review how it works
 local taglist_buttons = gears.table.join(
@@ -301,7 +333,6 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            launcher,
             s.mytaglist,
             s.mypromptbox,
         },
