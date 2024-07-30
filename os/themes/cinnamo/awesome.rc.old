@@ -1,33 +1,4 @@
--- -------------------------------
---   Imports
--- -------------------------------
 
--- import `luarocks` if available
-pcall(require, "luarocks.loader")
--- std awesome library
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
--- widget and layout library
-local wibox = require("wibox")
--- theme handling library
-local beautiful = require("beautiful")
--- notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- enable hotkeys help widget for VIM and other apps
-require("awful.hotkeys_popup.keys")
-
--- -------------------------------
---   Variables
--- -------------------------------
-
-editor   = os.getenv("EDITOR")   or "nvim"
-terminal = os.getenv("TERMINAL") or "kitty"
-nixoscfg = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
-modkey   = "Mod4" -- Super key
-altkey   = "Mod1" -- Alt key
 
 -- -------------------------------
 --   Context Menu
@@ -43,52 +14,8 @@ contextmenu = awful.menu({ items = {
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = contextmenu }) -- FIXME: Delete or replace
 
--- -------------------------------
---   Error Handling
--- -------------------------------
-
--- handle startup errors
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- handle runtime errors (after startup)
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        if in_error then return end
-        in_error = true
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There was an error!",
-                         text = tostring(err) })
-        in_error = false
-    end)
-end
 
 
-
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
-}
--- }}}
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
