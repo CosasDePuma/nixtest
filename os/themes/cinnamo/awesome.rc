@@ -133,7 +133,9 @@ keybindings = gears.table.join(
     awful.key({ mainkey }, "u", awful.client.urgent.jumpto,
               {description = "focus urgent window", group = "window"}),
     -- focus last window
-    awful.key({ mainkey, "Tab" }, function() awful.client.focus.history.previous(); if client.focus then client.focus:raise() end,
+    awful.key({ mainkey, "Tab" }, function()
+                awful.client.focus.history.previous()
+                if client.focus then client.focus:raise() end,
               {description = "focus last window", group = "window"}),
     
     -- | Workspace
