@@ -30,8 +30,8 @@ modkey   = "Mod4" -- Super key
 altkey   = "Mod1" -- Alt key
 
 -- set the default key modifiers
-mainkey  = altkey
-scndkey  = modkey
+mainkey  = modkey
+scndkey  = scndkey
 
 -- set the default terminal
 menubar.utils.terminal = terminal
