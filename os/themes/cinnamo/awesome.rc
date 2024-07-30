@@ -158,7 +158,7 @@ root.keys(keybindings)
 -- mouse bindings
 mousebindings = gears.table.join(
     -- context menu
-    awful.button({ }, 3, function() contextmenu:toggle() end),
+    awful.button({ }, 3, function() contextmenu:toggle() end)
 )
 root.buttons(mousebindings)
 
