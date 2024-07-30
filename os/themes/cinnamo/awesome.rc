@@ -61,6 +61,7 @@ end
 --  Context menu
 -- -------------------------------
 
+-- context menu
 contextmenu = awful.menu({
     items = {
         { "terminal",    function() awful.spawn(terminal) end },
@@ -70,6 +71,9 @@ contextmenu = awful.menu({
         { "quit",        function() awesome.quit() end }
     }
 })
+
+-- launcher
+launcher = awful.widget.launcher({ menu = contextmenu })
 
 -- -------------------------------
 --   Layouts
@@ -83,9 +87,6 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
 
 -- TODO: Check this
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = contextmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -192,7 +193,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            launcher,
             s.mytaglist,
             s.mypromptbox,
         },
