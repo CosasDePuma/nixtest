@@ -29,9 +29,8 @@ config   = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
 modkey   = "Mod4" -- Super key
 altkey   = "Mod1" -- Alt key
 
--- FIXME: DELETE THIS
-editor_cmd = terminal .. " -e " .. editor
--- END FIXME
+-- set the default terminal
+menubar.utils.terminal = terminal
 
 -- -------------------------------
 --   Error Handling
@@ -73,7 +72,10 @@ contextmenu = awful.menu({
 })
 
 -- launcher
+-- TODO: Remove this
 launcher = awful.widget.launcher({ menu = contextmenu })
+-- TODO: Check this
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- -------------------------------
 --   Layouts
@@ -85,11 +87,8 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
     awful.layout.suit.fair,
 }
 
--- TODO: Check this
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+ -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
