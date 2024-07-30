@@ -182,7 +182,7 @@ mousebindings_client = gears.table.join(
 --   Client rules
 -- -------------------------------
 
-awful.rules.rules({
+awful.rules.rules = {
     -- rules for all clients
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -193,8 +193,8 @@ awful.rules.rules({
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap + awful.placement.no_offscreen
       }
-    },
-})
+    }
+}
 
 -- -------------------------------
 --   Menu widgets
