@@ -92,24 +92,29 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
 -- -------------------------------
 
 keybindings = gears.table.join(
-    -- Open terminal
-    awful.key({ altkey }, "Return", function() awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    -- Open launcher. FIXME: Install rofi
-    awful.key({ altkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
-              {description = "open the launcher", group = "launcher"}),
-    -- Open context menu. FIXME: Not working
-    awful.key({ altkey }, "c", function() contextmenu:toggle() end,
-              {description = "open the context menu", group = "launcher"}),
-    -- Open hotkeys
+    -- | AwesomeVM
+    -- open hotkeys
     awful.key({ altkey }, "h", hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    -- Open main menu
-    awful.key({ altkey }, "w", function() mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-    -- Open menubar
-    awful.key({ altkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+
+    -- | Launcher
+    -- open terminal
+    awful.key({ altkey }, "Return", function() awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
+    -- open launcher. FIXME: Install rofi
+    awful.key({ altkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
+              {description = "open the launcher", group = "launcher"}),
+    -- open context menu. FIXME: Not working
+    awful.key({ altkey }, "c", function() contextmenu:toggle() end,
+              {description = "open the context menu", group = "launcher"}),
+
+    -- | Window Management
+    -- focus next window
+    awful.key({ altkey }, "j", function() awful.client.focus.byidx(1) end,
+              {description = "focus next window", group = "window"}),
+    -- focus previous window
+    awful.key({ altkey }, "k", function() awful.client.focus.byidx(-1) end,
+              {description = "focus previous window", group = "window"}),
 )
 
 -- -------------------------------
