@@ -122,9 +122,8 @@ keybindings = gears.table.join(
     awful.key({ mainkey }, "q", function() client.focus:kill() end,
               {description = "close window", group = "window"}),
     -- fullscreen window
-    awful.key({ modkey }, "f", function (c) c.fullscreen = not c.fullscreen
-                    c:raise() end,
-              {description = "toggle fullscreen", group = "client"}),
+    awful.key({ modkey }, "f", function() client.focus.fullscreen = not client.focus.fullscreen end,
+              {description = "fullscreen window", group = "window" }),
     -- focus next window
     awful.key({ mainkey }, "k", function() awful.client.focus.byidx(1) end,
               {description = "focus next window", group = "window"}),
