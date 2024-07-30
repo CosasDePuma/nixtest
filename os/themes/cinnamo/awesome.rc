@@ -117,6 +117,9 @@ keybindings = gears.table.join(
               {description = "open the context menu", group = "launcher"}),
 
     -- | Window
+    -- close window
+    awful.key({ mainkey }, "q", function() client.focus:kill() end,
+              {description = "close window", group = "window"}),
     -- focus next window
     awful.key({ mainkey }, "j", function() awful.client.focus.byidx(1) end,
               {description = "focus next window", group = "window"}),
@@ -135,6 +138,11 @@ keybindings = gears.table.join(
     -- focus last window
     awful.key({ mainkey }, "Tab", function() awful.client.focus.history.previous() end,
               {description = "focus last window", group = "window"}),
+    
+    -- | Layout
+    -- switch layout
+    awful.key({ mainkey }, "l", function() awful.layout.inc(1) end,
+              {description = "switch layout", group = "layout"}),
     
     -- | Workspace
     -- focus next workspace
@@ -276,23 +284,6 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ altkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
