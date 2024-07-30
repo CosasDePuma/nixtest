@@ -122,8 +122,13 @@ keybindings = gears.table.join(
     awful.key({ mainkey }, "q", function() client.focus:kill() end,
               {description = "close window", group = "window"}),
     -- fullscreen window
-    awful.key({ modkey }, "f", function() client.focus.fullscreen = not client.focus.fullscreen end,
-              {description = "fullscreen window", group = "window" }),
+    awful.key({ mainkey }, "m", function() client.focus.maximized = not client.focus.maximized end,
+              {description = "maximize window", group = "window"}),
+    awful.key({ modkey, "Shift" }, "m", function() client.focus.fullscreen = not client.focus.fullscreen end,
+              {description = "toggle fullscreen window", group = "window" }),
+    -- keep on top window
+    awful.key({ mainkey }, "t", function() client.focus.ontop = not client.focus.ontop end,
+              {description = "toggle keep on top window", group = "window"}),
     -- focus next window
     awful.key({ mainkey }, "k", function() awful.client.focus.byidx(1) end,
               {description = "focus next window", group = "window"}),
@@ -287,24 +292,8 @@ end)
 -- }}}
 
 
--- {{{ Key bindings
-globalkeys = gears.table.join(
-
-    awful.key({ modkey, "Control" }, "n",
-              function ()
-                  local c = awful.client.restore()
-                  -- Focus restored client
-                  if c then
-                    c:emit_signal(
-                        "request::activate", "key.unminimize", {raise = true}
-                    )
-                  end
-              end,
-              {description = "restore minimized", group = "client"})
-)
-
-clientkeys = gears.table.join(
-
+clientkeys = gears.table.join()
+/*
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
@@ -406,6 +395,7 @@ clientbuttons = gears.table.join(
         awful.mouse.client.resize(c)
     end)
 )
+*/
 
 
 -- {{{ Rules
