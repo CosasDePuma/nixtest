@@ -166,13 +166,13 @@ root.keys(keybindings)
 -- mouse bindings
 mousebindings = gears.table.join(
     -- focus window
-    awful.button({ }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
+    awful.button({ }, 1, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}) end),
     -- focus & move window
-    awful.button({ mainkey }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.move(c) end),
+    awful.button({ mainkey }, 1, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.move(client.focus) end),
     -- context menu
     awful.button({ }, 3, function() contextmenu:toggle() end),
     -- focus & resize window
-    awful.button({ mainkey }, 3, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.resize(c) end)
+    awful.button({ mainkey }, 3, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.resize(client.focus) end)
 )
 root.buttons(mousebindings)
 
