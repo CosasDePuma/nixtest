@@ -165,16 +165,36 @@ root.keys(keybindings)
 
 -- mouse bindings
 mousebindings = gears.table.join(
-    -- focus window
-    awful.button({ }, 1, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}) end),
-    -- focus & move window
-    awful.button({ mainkey }, 1, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.move(client.focus) end),
     -- context menu
-    awful.button({ }, 3, function() contextmenu:toggle() end),
-    -- focus & resize window
-    awful.button({ mainkey }, 3, function () client.focus:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.resize(client.focus) end)
+    awful.button({ }, 3, function() contextmenu:toggle() end)
 )
 root.buttons(mousebindings)
+mousebindings_client = gears.table.join(
+    -- focus window
+    awful.button({ }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
+    -- focus & move window
+    awful.button({ mainkey }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.move(c) end),
+    -- focus & resize window
+    awful.button({ mainkey }, 3, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}); awful.mouse.client.resize(c) end)
+)
+
+-- -------------------------------
+--   Client rules
+-- -------------------------------
+
+awful.rules.rules({
+    -- rules for all clients
+    { rule = { },
+      properties = { border_width = beautiful.border_width,
+                     border_color = beautiful.border_normal,
+                     focus = awful.client.focus.filter,
+                     raise = true,
+                     buttons = mousebindings_client,
+                     screen = awful.screen.preferred,
+                     placement = awful.placement.no_overlap + awful.placement.no_offscreen
+      }
+    },
+})
 
 -- -------------------------------
 --   Menu widgets
