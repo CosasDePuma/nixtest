@@ -95,6 +95,7 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
 --   Keybindings
 -- -------------------------------
 
+-- key bindings
 keybindings = gears.table.join(
     -- | AwesomeVM
     -- open hotkeys
@@ -152,6 +153,14 @@ keybindings = gears.table.join(
     awful.key({ mainkey }, "Left", function() awful.tag.viewprev() end,
               {description = "focus previous workspace", group = "workspace"})
 )
+root.keys(keybindings)
+
+-- mouse bindings
+mousebindings = gears.table.join(
+    -- context menu
+    awful.button({ }, 3, function() contextmenu:toggle() end),
+)
+root.buttons(mousebindings)
 
 -- -------------------------------
 --   Menu widgets
@@ -274,13 +283,6 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
--- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () contextmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
--- }}}
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -425,9 +427,6 @@ clientbuttons = gears.table.join(
     end)
 )
 
--- Set keys
-root.keys(keybindings)
--- }}}
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
