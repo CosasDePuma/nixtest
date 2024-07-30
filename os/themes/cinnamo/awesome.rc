@@ -25,7 +25,7 @@ require("awful.hotkeys_popup.keys")
 
 editor   = os.getenv("EDITOR")   or "nvim"
 terminal = os.getenv("TERMINAL") or "kitty"
-config   = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
+nixoscfg = os.getenv("FLAKE")    or "/etc/nixos" -- # Only used if NixOS
 modkey   = "Mod4" -- Super key
 altkey   = "Mod1" -- Alt key
 
@@ -56,20 +56,6 @@ do
         in_error = false
     end)
 end
-
--- -------------------------------
---  Context menu
--- -------------------------------
-
-contextmenu = awful.menu({
-    items = {
-        { "terminal",    function() awful.spawn(terminal) end },
-        { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-        { "edit config", function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
-        { "reload",      awesome.restart },
-        { "quit",        function() awesome.quit() end }
-    }
-})
 
 -- -------------------------------
 --   Layouts
