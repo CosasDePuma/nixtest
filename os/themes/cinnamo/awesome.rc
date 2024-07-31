@@ -49,13 +49,15 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- context menu
 contextmenu = awful.menu({
     items = {
-        { "terminal",    function() awful.spawn(terminal) end },
-        { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-        { "edit config", function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
-        { "reload",      awesome.restart },
-        { "quit",        function() awesome.quit() end },
-        { "shutdown",    function() awful.spawn("poweroff") end },
-        { "reboot",      function() awful.spawn("reboot") end }
+        { "terminal",     function() awful.spawn(terminal) end },
+        { "hotkeys",      function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+        { "edit config",  function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
+        { "reload",       awesome.restart },
+        { "session", {
+            { "quit",     function() awesome.quit() end },
+            { "shutdown", function() awful.spawn("poweroff") end },
+            { "reboot",   function() awful.spawn("reboot") end }
+        }}
     }
 })
 
