@@ -43,30 +43,6 @@ menubar.utils.terminal = terminal
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- -------------------------------
---   Error Handling
--- -------------------------------
-
--- handle startup errors
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- handle runtime errors (after startup)
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        if in_error then return end
-        in_error = true
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There was an error!",
-                         text = tostring(err) })
-        in_error = false
-    end)
-end
-
--- -------------------------------
 --  Context menu
 -- -------------------------------
 
@@ -78,6 +54,8 @@ contextmenu = awful.menu({
         { "edit config", function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
         { "reload",      awesome.restart },
         { "quit",        function() awesome.quit() end }
+        { "shutdown",    function() awful.spawn("poweroff") end },
+        { "reboot",      function() awful.spawn("reboot") end }
     }
 })
 
@@ -96,7 +74,7 @@ awful.layout.layouts = { -- TODO: Add popups with the current layout
 -- -------------------------------
 
 -- key bindings
-keybindings = gears.table.join(
+keybindings_global = gears.table.join(
     -- | AwesomeVM
     -- open hotkeys
     awful.key({ mainkey }, "h", hotkeys_popup.show_help,
@@ -161,14 +139,14 @@ keybindings = gears.table.join(
     awful.key({ mainkey }, "Left", function() awful.tag.viewprev() end,
               {description = "focus previous workspace", group = "workspace"})
 )
-root.keys(keybindings)
+root.keys(keybindings_global)
 
 -- mouse bindings
-mousebindings = gears.table.join(
+mousebindings_global = gears.table.join(
     -- context menu
     awful.button({ }, 3, function() contextmenu:toggle() end)
 )
-root.buttons(mousebindings)
+root.buttons(mousebindings_global)
 mousebindings_client = gears.table.join(
     -- focus window
     awful.button({ }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
@@ -206,8 +184,29 @@ keyboardlayout = awful.widget.keyboardlayout()
 -- clock
 textclock = wibox.widget.textclock()
 
+-- -------------------------------
+--   Error Handling
+-- -------------------------------
 
+-- handle startup errors
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There were errors during startup!",
+                     text = awesome.startup_errors })
+end
 
+-- handle runtime errors (after startup)
+do
+    local in_error = false
+    awesome.connect_signal("debug::error", function (err)
+        if in_error then return end
+        in_error = true
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Woopsy! There was an error!",
+                         text = tostring(err) })
+        in_error = false
+    end)
+end
 
 
 

@@ -28,6 +28,8 @@
     user.name                = "${username}";                     # User
   };
 
+  services.qemuGuest.enable = true;                               # QEMU (Virtualization)
+
   # ---------------------------------------------
   #  Programs
   # ---------------------------------------------

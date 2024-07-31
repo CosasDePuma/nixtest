@@ -14,9 +14,7 @@
             beautiful.init("/etc/xdg/awesome/themes/default/theme.lua")
           '';
           type = with lib.types; nullOr str;
-          description = ''
-            The AwesomeVM configuration file.
-          '';
+          description = "Content of the AwesomeVM configuration file.";
         };
       };
     };
