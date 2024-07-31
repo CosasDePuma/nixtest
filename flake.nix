@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     # -----------------------
     #  Third-party modules
@@ -15,6 +16,7 @@
   outputs = { nixpkgs, ... } @ inputs:
     let
       extraModules = [
+        inputs.home-manager.nixosModules.default
         inputs.minegrub-theme.nixosModules.default
       ];
       os' = import ./os { inherit nixpkgs extraModules; };

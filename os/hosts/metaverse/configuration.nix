@@ -13,6 +13,7 @@
   within = {
     boot.loader              = "grub";                            # GRUB (Bootloader)
     boot.theme               = "minegrub";                        # Boot theme (Only for GRUB)
+    desktop.awesomevm        = true;                              # AwesomeVM (Window manager)
     display.manager          = "sddm";                            # SSDM (Display manager)
     display.autologin        = true;                              # Auto-login
     gc                       = "daily";                           # Garbage collector
@@ -24,7 +25,7 @@
     nix.version              = "unstable";                        # NixOS version
     sound                    = "pipewire";                        # Sound manager
     timezone                 = "Europe/Madrid";                   # Timezone
-    theme                    = "cinnamo";                         # Cinnamoroll (Desktop environment)
+    # theme                    = "cinnamo";                         # Cinnamoroll (Desktop environment)
     user.name                = "${username}";                     # User
   };
 
