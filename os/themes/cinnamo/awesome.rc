@@ -53,7 +53,7 @@ contextmenu = awful.menu({
         { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
         { "edit config", function() awful.spawn(terminal .. " -e " .. editor .. " " .. config) end },
         { "reload",      awesome.restart },
-        { "quit",        function() awesome.quit() end }
+        { "quit",        function() awesome.quit() end },
         { "shutdown",    function() awful.spawn("poweroff") end },
         { "reboot",      function() awful.spawn("reboot") end }
     }
