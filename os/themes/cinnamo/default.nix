@@ -9,9 +9,5 @@
       environment.variables."TERMINAL" = "${pkgs.kitty}/bin/kitty";
       within.desktop.awesomevm.enable = lib.mkDefault true;
       within.desktop.awesomevm.rc = lib.mkDefault (builtins.readFile ./awesome.rc);
-
-      environment.defaultPackages = [
-        eww
-      ];
     };
   }
